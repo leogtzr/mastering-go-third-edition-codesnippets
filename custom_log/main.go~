@@ -1,0 +1,12 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+	"path"
+)
+
+func main() {
+	LOGFILE := path.Join(os.TempDir(), "mGo.log")
+	file, err := os.OpenFile(LOGFILE, os.O_APPEND
