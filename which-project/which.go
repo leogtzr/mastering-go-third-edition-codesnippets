@@ -7,14 +7,8 @@ import (
 	"runtime"
 )
 
-func main() {
-	arguments := os.Args
-	if len(arguments) == 1 {
-		fmt.Fprintln(os.Stderr, "Please provide an argument")
-		return
-	}
-
-	file := arguments[1]
+func listProgram(arg string) {
+	file := arg
 	path := os.Getenv("PATH")
 	// a portable way of separating a list of paths:
 	pathSplit := filepath.SplitList(path)
@@ -32,10 +26,23 @@ func main() {
 					// Is it executable?
 					if mode&0111 != 0 {
 						fmt.Println(fullPath)
-						return
+						// return
 					}
 				}
 			}
 		}
+	}
+}
+
+func main() {
+
+	arguments := os.Args
+	if len(arguments) == 1 {
+		fmt.Fprintln(os.Stderr, "Please provide an argument")
+		return
+	}
+
+	for _, arg := range arguments[1:] {
+		listProgram(arg)
 	}
 }
