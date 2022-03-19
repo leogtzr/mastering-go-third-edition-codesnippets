@@ -12,5 +12,19 @@ func main() {
     fmt.Printf("Type of c3: %T\n", c3)
     cZero := c3 - c3
     fmt.Println("cZero:", cZero)
-}
+    var m, n float64
+    m = 1.223
+    fmt.Println("m, n:", m, n)
+    y := 4 / 2.3
+    fmt.Println("y:", y)
 
+    x := 12
+    k := 5
+
+    /*
+        How to get floating-point results using type conversions
+    */
+    divFloat := float64(x) / float64(k)
+    fmt.Println("divFloat", divFloat)
+    fmt.Printf("Type of divFloat: %T\n", divFloat)
+}
