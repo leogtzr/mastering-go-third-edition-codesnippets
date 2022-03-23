@@ -73,4 +73,8 @@ func main() {
 	fmt.Printf("Time: %d:%d\n", d.Hour(), d.Minute())
 	duration := time.Since(start)
 	fmt.Println("Execution time:", duration)
+
+    now := time.Now()
+    loc, _ := time.LoadLocation("America/New_York")
+    fmt.Printf("New York Time: %s\n", now.In(loc))
 }
