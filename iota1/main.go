@@ -20,4 +20,20 @@ const (
 func main() {
     fmt.Println(C1)
     fmt.Println(PI)
+    const s1 = 123
+    var v1 float32 = s1 * 12
+    fmt.Println(v1)
+    fmt.Println(PI)
+    const (
+        Zero Digit = iota
+        One
+        Two
+        Three
+        Four
+    )
+    fmt.Println(Zero)
+    fmt.Println(One)
+    fmt.Println(Two)
+    fmt.Println(Three)
+    fmt.Println(Four)
 }
