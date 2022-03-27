@@ -54,3 +54,8 @@ Full month name (July, August)
 MST
 
 Time zone (EST, UTC)
+
+
+When you pass an array to a function, what is happening is that Go creates a copy 
+of that array and passes that copy to that function¿therefore any changes you make 
+to an array inside a function are lost when the function returns.
