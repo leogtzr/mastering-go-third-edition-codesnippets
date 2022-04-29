@@ -10,5 +10,10 @@ func main() {
 
 	fmt.Println(y)
 	fmt.Println(*y)
+	
+	*y = 5
+
+	fmt.Println("±±±±±±±±±±±±±±±±±±±±")
+	fmt.Println(x)
 }
 
