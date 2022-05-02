@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	MIN = 65
-	MAX = 90
+	MIN = 33
+	MAX = 93
 )
 
 func random(min, max int) int {
@@ -38,4 +38,5 @@ func getString(len int64) string {
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	fmt.Println(random(1, 100))
+	fmt.Println(getString(20))
 }
