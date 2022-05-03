@@ -2,8 +2,16 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"path"
+	"strconv"
+	"time"
+)
+
+const (
+	MIN = 33
+	MAX = 93
 )
 
 // Entry ...
@@ -13,11 +21,21 @@ type Entry struct {
 	Tel     string
 }
 
+func (entry Entry) String() string {
+	return fmt.Sprintf("%s %s, phone: %s", entry.Name, entry.Surname, entry.Tel)
+}
+
 var data = []Entry{}
 
 func search(key string) *Entry {
 	for i, v := range data {
-		if v.Surname == key {
+		/*
+			if v.Surname == key {
+				return &data[i]
+			}
+		*/
+		if v.Tel == key {
+			fmt.Println("       FOUND")
 			return &data[i]
 		}
 	}
@@ -31,6 +49,35 @@ func list() {
 	}
 }
 
+func random(min, max int) int {
+	return rand.Intn(max-min) + min
+}
+
+func getString(len int64) string {
+	temp := ""
+	startChar := "!"
+	var i int64 = 1
+	for {
+		myRand := random(MIN, MAX)
+		newChar := string(startChar[0] + byte(myRand))
+		temp = temp + newChar
+		if i == len {
+			break
+		}
+		i++
+	}
+	return temp
+}
+
+func populate(n int) {
+	for i := 0; i < n; i++ {
+		name := getString(4)
+		surname := getString(5)
+		n := strconv.Itoa(random(100, 199))
+		data = append(data, Entry{name, surname, n})
+	}
+}
+
 func main() {
 	arguments := os.Args
 	if len(arguments) == 1 {
@@ -39,9 +86,16 @@ func main() {
 		os.Exit(0)
 	}
 
-	data = append(data, Entry{"Mihalis", "Tsoukalos", "2109416471"})
-	data = append(data, Entry{"Mary", "Doe", "2109416871"})
-	data = append(data, Entry{"John", "Black", "2109416123"})
+	rand.Seed(time.Now().UnixNano())
+
+	populate(10)
+	data = append(data, Entry{"Leo", "Gtz", "123"})
+
+	fmt.Printf("%d entries\n", len(data))
+
+	for _, d := range data {
+		fmt.Println(d)
+	}
 
 	switch arguments[1] {
 	case "search":
