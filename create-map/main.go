@@ -16,4 +16,9 @@ func main() {
 
 	fmt.Println(map1)
 	fmt.Println(map2)
+
+	map2["maria"] = 51
+	fmt.Println(map2)
+	delete(map2, "maria")
+	fmt.Println(map2)
 }
