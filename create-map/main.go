@@ -21,4 +21,11 @@ func main() {
 	fmt.Println(map2)
 	delete(map2, "maria")
 	fmt.Println(map2)
+	
+	fmt.Println(len(map2))
+
+	if v, ok := map2["leonardo"]; ok {
+		fmt.Println(ok)
+		fmt.Println(v)
+	}
 }
