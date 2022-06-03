@@ -1,0 +1,16 @@
+func saveCSVFile(filepath string) error {
+    csvfile, err := os.Create(filepath)
+    if err != nil {
+        return err
+    }
+    defer csvfile.Close()
+    csvwriter := csv.NewWriter(csvfile)
+    // Changing the default field delimiter to tab
+    csvwriter.Comma = '\t'
+    for _, row := range myData {
+        temp := []string{row.Name, row.Surname, row.Number, row.LastAccess}
+        _ = csvwriter.Write(temp)
+    }
+    csvwriter.Flush()
+    return nil
+}
